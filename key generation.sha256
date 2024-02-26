@@ -1,0 +1,25 @@
+let's do the same steps, but for SHA1 and SHA256 hashes using the shasum tool. Functionally, the two work in very similar ways, and their purpose is the same. But SHA1 and SHA256 offer stronger security than MD5, and SHA256 is more secure than SHA1. This means that it's easier for a malicious third party to attack a system using MD5 than one using SHA1. And because SHA256 is the strongest of the three, it's currently widely used.
+
+To create the SHA1 sum and save it to a file, use this command:
+shasum file.txt > file.txt.sha1
+
+View it by printing it to the screen, like you've done before:
+cat file.txt.sha1
+
+cat file.txt.sha1
+
+Now, verify the hash using the command below. (Like before, this would fail if the original file had been changed.
+shasum -c file.txt.sha1
+
+The same tool can be used to create a SHA256 sum. The "-a" flag specifies the algorithm to use, and defaults to SHA1 if nothing is specified. To generate the SHA256 sum of the file, use this command:
+
+shasum -a 256 file.txt > file.txt.sha256
+
+cat file.txt.sha256
+
+shasum -c file.txt.sha256
+
+multifactor authentication 
+secret key
+u2f tokens
+otp solution
