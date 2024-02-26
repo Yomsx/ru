@@ -1,0 +1,43 @@
+Md5sum is a hashing program that calculates and verifies 128-bit MD5 hashes. As with all hashing algorithms, theoretically, there's an unlimited number of files that will have any given MD5 hash. Md5sum is used to verify the integrity of files.
+Similarly, shasum is an encryption program that calculates and verifies SHA hashes. It's also commonly used to verify the integrity of files.
+
+MD5
+Let's kick things off by creating a text file containing some data. Feel free to substitute your own text data, if you want. This command creates a text file called "file.txt" with a single line of basic text in it:
+
+You should see the following output (or something very similar) :
+
+echo 'This is some text in a file, just so we have some data' > file.txt
+
+You'll now generate the MD5 sum for the file and store it. To generate the sum for your new file, enter this md5sum command:
+
+md5sum file.txt > file.txt.md5
+
+This creates the MD5 hash, and saves it to a new file. You can take a look at the hash by printing its contents to the screen, using this command:
+
+cat file.txt.md5
+
+Verifying an invalid file
+Next, we'll demonstrate the security of this process by showing how even a single-character change to the file results in a different hash. First, you'll create a copy of the text file, and insert a single space at the end of the file. Feel free to use any text-editor that you'd like. Head's up that we've included instructions for making this change in Nano. To make a copy of the file, enter this command:
+cp file.txt badfile.txt
+
+Then generate a new md5sum for the new file:
+
+md5sum badfile.txt > badfile.txt.md5
+
+nano badfile.txt
+
+To save the file, press ctrl+X. You should see this message:
+
+This is some text in a file, just so we have some data 
+<br>
+Confirm by typing Y for yes, then press Enter to confirm.
+
+This will take you back to the normal terminal screen. Now that you've made a very minor change to the file, try verifying the hash again. It should fail verification this time, showing that any change at all will result in a different hash. Try to verify it by entering this command again:
+
+md5sum -c badfile.txt.md5
+
+To see how different the hash of the edited file is, generate a new hash and inspect it:
+
+md5sum badfile.txt > new.badfile.txt.md5
+Copied!
+cat new.badfile.txt.md5
