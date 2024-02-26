@@ -32,7 +32,3 @@ app.use(helmet.contentSecurityPolicy(cspConfig));
 dnsPrefetchControl: false
 
 // Your other middleware and routes...
-
-Multipurpose Internet Mail Extension 
-
-r
